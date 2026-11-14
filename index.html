@@ -10,10 +10,11 @@
   <meta property="og:locale" content="ru_RU">
   <meta property="og:title" content="Племенная книга — ваш питомник под контролем">
   <meta property="og:description" content="Удобный учёт животных, вязок, помётов и ветпроцедур. Ваши записи хранятся на устройстве. Базовая версия бесплатно.">
+  <meta property="og:image" content="https://breedbook.ru/assets/cover.webp">
   <meta property="og:url" content="https://breedbook.ru/">
   <link rel="canonical" href="https://breedbook.ru/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=cover-1">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Племенная книга","url":"https://breedbook.ru/","inLanguage":"ru","author":{"@type":"Person","name":"Лариса Молчанова"}}</script>
 </head>
 <body>
@@ -21,7 +22,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="./" aria-label="Племенная книга — главная">
-        <span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M9 12V5.5A2.5 2.5 0 0 1 11.5 3H25a2 2 0 0 1 2 2v21a2 2 0 0 1-2 2H11.5A2.5 2.5 0 0 1 9 25.5V23" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M5 12l3-4 3 4 5-1 4 4v7l-5 4H7l-4-4v-7l2-3z" fill="currentColor"/><path d="M8 17h.1m8 0h.1" stroke="#183f36" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+        <span class="brand-symbol" aria-hidden="true"><img src="favicon.svg" width="30" height="30" alt=""></span>
         <span>ПЛЕМЕННАЯ КНИГА<small>Для заводчиков кошек и собак</small></span>
       </a>
       <nav class="nav-links" aria-label="Главное меню">
@@ -37,42 +38,23 @@
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Создано заводчиком для заводчиков</p>
-          <h1 id="hero-title">Ваш питомник.<br><em>Ваши данные.</em><br>Ваши правила.</h1>
-          <p class="lead">Электронная племенная книга для кошек и собак: родословные, вязки, помёты, история животных и ветеринарные процедуры. Всё в одном месте — даже когда нет интернета.</p>
-          <div class="hero-actions">
-            <a class="button" href="#books">Выбрать свою книгу <span aria-hidden="true">↗</span></a>
-            <a class="button button-light" href="#how-it-works">Как это работает</a>
+      <div class="container">
+        <picture class="cover">
+          <source media="(max-width: 650px)" srcset="assets/cover-small.webp">
+          <img src="assets/cover.webp" width="1536" height="658" fetchpriority="high" alt="Циннамоновый ориентал и питбуль лежат рядом на бежевом вязаном пледе">
+        </picture>
+        <div class="cover-content">
+          <div>
+            <h1 id="hero-title">ПЛЕМЕННАЯ КНИГА</h1>
+            <p class="lead">Карточки, родословные, вязки и помёты. Электронная книга питомника, которая работает офлайн после первой загрузки.</p>
+            <p class="note"><strong>Базовая версия бесплатно.</strong> Без обязательной регистрации.</p>
           </div>
-          <p class="note"><strong>Базовая версия бесплатно.</strong> Без обязательной регистрации и ежемесячной подписки.</p>
-          <div class="pill-row" aria-label="Главные особенности">
-            <span class="pill">◌ &nbsp; Работает офлайн</span>
-            <span class="pill">▣ &nbsp; Данные на устройстве</span>
-            <span class="pill">♡ &nbsp; Для кошек и собак</span>
+          <div class="cover-actions">
+            <a class="animal-link" href="cats.html"><span class="animal-icon"><img src="assets/cat-icon.png" alt="" width="36" height="52"></span><span>Для кошек</span><span class="link-arrow" aria-hidden="true">›</span></a>
+            <a class="animal-link" href="dogs.html"><span class="animal-icon"><img src="assets/dog-icon.png" alt="" width="36" height="52"></span><span>Для собак</span><span class="link-arrow" aria-hidden="true">›</span></a>
           </div>
-        </div>
-        <div class="hero-visual" role="img" aria-label="Стилизованная иллюстрация племенной книги с карточками животных и календарём">
-          <div class="art-glow" aria-hidden="true"></div>
-          <div class="mockbook" aria-hidden="true">
-            <div class="mock-top"><span>✦ Племенная книга</span><span class="mock-dots"><i></i><i></i><i></i></span></div>
-            <div class="mock-main">
-              <p class="mock-head">Всё важное — в одном месте</p>
-              <div class="mock-stats">
-                <div class="mock-stat"><b>♧</b>Карточки животных</div>
-                <div class="mock-stat"><b>♡</b>Вязки и помёты</div>
-                <div class="mock-stat"><b>▦</b>Веткалендарь</div>
-              </div>
-              <div class="mock-row"><span class="mock-icon">🐈</span><span><b>Учёт животных</b><small>Карточки и родословные</small></span><span class="mock-tag">В книге</span></div>
-              <div class="mock-row"><span class="mock-icon">🐾</span><span><b>Развитие помёта</b><small>Веса, наблюдения, процедуры</small></span><span class="mock-tag">Под рукой</span></div>
-              <div class="mock-row"><span class="mock-icon">📅</span><span><b>Важные даты</b><small>Календарь и напоминания</small></span><span class="mock-tag">По плану</span></div>
-            </div>
-          </div>
-          <div class="float-note" aria-hidden="true">Интернет пропал? Работа продолжается.<span>После первоначальной загрузки</span></div>
         </div>
       </div>
-      <div class="container"><p class="disclaimer">Иллюстрация показывает возможности программы, а не точный снимок её интерфейса.</p></div>
     </section>
 
     <section class="section section-alt" id="benefits" aria-labelledby="benefits-title">
@@ -83,12 +65,12 @@
           <p class="section-intro">Создана для реальной жизни питомника, где нужная запись должна открываться сразу — независимо от капризов связи и количества дел.</p>
         </div>
         <div class="feature-grid">
-          <article class="feature-card"><span class="icon-box" aria-hidden="true">◌</span><h3>Без постоянного интернета</h3><p>После первоначальной загрузки и сохранения файлов браузером программа может работать автономно. Доступ к серверу не нужен для обычных записей.</p></article>
-          <article class="feature-card"><span class="icon-box" aria-hidden="true">▣</span><h3>Записи остаются у вас</h3><p>Карточки, помёты и дневники хранятся локально в браузере устройства. Облачное хранение не требуется для базовой работы.</p></article>
-          <article class="feature-card"><span class="icon-box" aria-hidden="true">♧</span><h3>От животных до родословных</h3><p>Связанные записи помогают видеть происхождение, вязки, потомство и историю каждого животного, а не собирать сведения по разным таблицам.</p></article>
-          <article class="feature-card"><span class="icon-box" aria-hidden="true">▦</span><h3>Даты рассчитываются</h3><p>Вязки, ожидаемые роды, прививки, обработки и другие события удобно вести в одном ветеринарном календаре.</p></article>
-          <article class="feature-card"><span class="icon-box" aria-hidden="true">♡</span><h3>Помёт под контролем</h3><p>Учёт котят и щенков: веса, история развития, заметки, процедуры и дальнейшая судьба выпускников.</p></article>
-          <article class="feature-card"><span class="icon-box" aria-hidden="true">↧</span><h3>Резервная копия JSON</h3><p>Можно сохранить файл со своими записями и вручную перенести базу на другое устройство. Регулярные копии защищают от случайной потери.</p></article>
+          <article class="feature-card"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a12 12 0 0 1 16 0M7 12a7 7 0 0 1 10 0m-7 3a3 3 0 0 1 4 0"/><circle cx="12" cy="19" r="1"/></svg></span><h3>Без постоянного интернета</h3><p>После первоначальной загрузки и сохранения файлов браузером программа может работать автономно. Доступ к серверу не нужен для обычных записей.</p></article>
+          <article class="feature-card"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10h8m-8 4h8"/></svg></span><h3>Записи остаются у вас</h3><p>Карточки, помёты и дневники хранятся локально в браузере устройства. Облачное хранение не требуется для базовой работы.</p></article>
+          <article class="feature-card"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4m-6 4v-4h12v4"/></svg></span><h3>От животных до родословных</h3><p>Связанные записи помогают видеть происхождение, вязки, потомство и историю каждого животного, а не собирать сведения по разным таблицам.</p></article>
+          <article class="feature-card"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M8 4v4m8-4v4M4 11h16m-12 4h2m4 0h2"/></svg></span><h3>Даты рассчитываются</h3><p>Вязки, ожидаемые роды, прививки, обработки и другие события удобно вести в одном ветеринарном календаре.</p></article>
+          <article class="feature-card"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20 4.8 13a4.5 4.5 0 0 1 6.4-6.4l.8.8.8-.8a4.5 4.5 0 0 1 6.4 6.4Z"/></svg></span><h3>Помёт под контролем</h3><p>Учёт котят и щенков: веса, история развития, заметки, процедуры и дальнейшая судьба выпускников.</p></article>
+          <article class="feature-card"><span class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/></svg></span><h3>Резервная копия JSON</h3><p>Можно сохранить файл со своими записями и вручную перенести базу на другое устройство. Регулярные копии защищают от случайной потери.</p></article>
         </div>
       </div>
     </section>
@@ -102,19 +84,19 @@
         </div>
         <div class="book-grid">
           <article class="book-card">
-            <div class="book-art" aria-hidden="true"><span class="animal">🐈</span></div>
+            <a class="book-art" href="cats.html" aria-label="Племенная книга для кошек"><img src="assets/cat-portrait.webp" alt="Ориентальная кошка на вязаном пледе" width="800" height="710" loading="lazy"></a>
             <div class="book-body">
               <div class="label">Для заводчиков кошек</div>
-              <h3>Племенная книга для кошек</h3>
+              <h3 class="animal-heading"><span class="animal-icon"><img src="assets/cat-icon.png" alt="" width="36" height="52"></span>Племенная книга для кошек</h3>
               <p>Коды окрасов WCF, родословные, вязки, помёты, контроль веса, ветеринарный календарь и предупреждения о рисках по группам крови.</p>
               <a class="button" href="cats.html">Подробнее и открыть книгу <span aria-hidden="true">↗</span></a>
             </div>
           </article>
           <article class="book-card">
-            <div class="book-art dog-art" aria-hidden="true"><span class="animal">🐕</span></div>
+            <a class="book-art" href="dogs.html" aria-label="Племенная книга для собак"><img src="assets/dog-portrait.webp" alt="Питбуль с ушами-розочками на вязаном пледе" width="800" height="710" loading="lazy"></a>
             <div class="book-body">
               <div class="label">Для заводчиков собак</div>
-              <h3>Племенная книга для собак</h3>
+              <h3 class="animal-heading"><span class="animal-icon"><img src="assets/dog-icon.png" alt="" width="36" height="52"></span>Племенная книга для собак</h3>
               <p>Карточки и происхождение собак, учёт течек, вязок и беременностей, помёты, графики роста и ветеринарный учёт.</p>
               <a class="button" href="dogs.html">Подробнее и открыть книгу <span aria-hidden="true">↗</span></a>
             </div>
@@ -178,9 +160,9 @@
       <p class="section-intro">Понятные инструкции по реальным кнопкам нашей книги: от установки до безопасного восстановления всех записей.</p>
     </div>
     <div class="guide-card-grid">
-      <a class="guide-card" href="install.html"><span class="guide-num">01</span><span class="guide-icon" aria-hidden="true">📲</span><strong>Установка</strong><span>Windows, Android, iPhone и проверка офлайн-работы.</span><b>Читать ↗</b></a>
-      <a class="guide-card" href="records.html"><span class="guide-num">02</span><span class="guide-icon" aria-hidden="true">🐾</span><strong>Начало работы</strong><span>Животные, вязки, помёты, ветеринарный учёт.</span><b>Читать ↗</b></a>
-      <a class="guide-card" href="backup.html"><span class="guide-num">03</span><span class="guide-icon" aria-hidden="true">💾</span><strong>Защита записей</strong><span>Сохранение JSON, перенос и восстановление базы.</span><b>Читать ↗</b></a>
+      <a class="guide-card" href="install.html"><span class="guide-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17h2"/></svg></span><strong>Установка</strong><span>Windows, Android, iPhone и проверка офлайн-работы.</span><b>Читать ↗</b></a>
+      <a class="guide-card" href="records.html"><span class="guide-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4m-6 4v-4h12v4"/></svg></span><strong>Начало работы</strong><span>Животные, вязки, помёты, ветеринарный учёт.</span><b>Читать ↗</b></a>
+      <a class="guide-card" href="backup.html"><span class="guide-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/></svg></span><strong>Защита записей</strong><span>Сохранение JSON, перенос и восстановление базы.</span><b>Читать ↗</b></a>
     </div>
     <div class="actions" style="justify-content:center;margin-top:25px"><a class="button button-ghost" href="guide.html">Все инструкции и помощь ↗</a></div>
   </div>
@@ -222,7 +204,7 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div><a class="brand" href="./"><span class="brand-symbol" aria-hidden="true">🐾</span><span>ПЛЕМЕННАЯ КНИГА<small style="color:#a9c2b1">Создано заводчиком для заводчиков</small></span></a><p style="margin-top:16px">Автор проекта — Лариса Молчанова. Для питомников кошек и собак.</p></div>
+        <div><a class="brand" href="./"><span class="brand-symbol" aria-hidden="true"><img src="favicon.svg" width="30" height="30" alt=""></span><span>ПЛЕМЕННАЯ КНИГА<small style="color:#a9c2b1">Создано заводчиком для заводчиков</small></span></a><p style="margin-top:16px">Автор проекта — Лариса Молчанова. Для питомников кошек и собак.</p></div>
         <div><h3>Программы</h3><ul><li><a href="cats.html">Книга для кошек</a></li><li><a href="dogs.html">Книга для собак</a></li><li><a href="#faq">Вопросы и ответы</a></li></ul></div>
         <div><h3>Связаться</h3><ul><li><a href="https://vk.ru/breed_cat" rel="noopener noreferrer">ВКонтакте</a></li><li><a href="https://t.me/breed_book" rel="noopener noreferrer">Telegram-канал</a></li><li><a href="https://t.me/breed_book_bot" rel="noopener noreferrer">Telegram-бот</a></li><li><a href="guide.html">Все инструкции</a></li><li><a href="https://t.me/breed_book/14" rel="noopener noreferrer">ЧАВО в Telegram</a></li></ul></div>
       </div>
