@@ -87,3 +87,54 @@ h1{font-size:clamp(42px,5.8vw,77px);margin-bottom:25px}h2{font-size:clamp(31px,3
 @media(max-width:900px){.hero-grid,.split,.inner-grid{grid-template-columns:1fr;gap:35px}.hero{padding-top:64px}.hero-copy h1{max-width:740px}.hero-visual{max-width:600px;margin-inline:auto}.feature-grid{grid-template-columns:repeat(2,1fr)}.header-inner{min-height:70px;flex-wrap:wrap;padding-block:12px}.nav-links{gap:16px}.footer-grid{gap:22px}.cta-panel{grid-template-columns:1fr}}
 @media(max-width:600px){.container{width:min(100% - 32px,1160px)}.site-header{position:relative}.header-inner{gap:10px}.nav-links{width:100%;display:flex;overflow-x:auto;flex-wrap:nowrap;gap:18px;padding-bottom:4px;white-space:nowrap;font-size:13px}.nav-cta{display:none}.hero{padding:49px 0 48px}h1{font-size:clamp(39px,11vw,52px)}.lead{font-size:16px}.hero-visual{min-height:380px;padding:8px}.mock-main{padding:16px}.mock-stat{padding:9px 7px}.mock-stat b{font-size:17px}.mock-top{padding:11px 14px}.float-note{right:-5px;bottom:0;width:172px;padding:10px;font-size:11px}.pill{font-size:11px;padding:7px 9px}.section{padding:63px 0}.feature-grid,.book-grid,.detail-grid{grid-template-columns:1fr}.book-art{min-height:180px}.book-body p{min-height:0}.story-card{padding:26px}.story-card .quote{font-size:24px}.cta-panel{padding:32px 25px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.inner-hero{padding:45px 0}.inner-hero .animal-frame{height:175px;width:175px;font-size:85px}.actions,.hero-actions{gap:10px}.button{width:100%}.help-links .button{width:auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Справочный центр */
+.guide-banner{background:linear-gradient(125deg,#eef5ed,#fbfaf6);padding:64px 0 58px}
+.guide-banner h1{max-width:830px;font-size:clamp(42px,5vw,64px)}
+.guide-banner .lead{max-width:800px}
+.guide-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:27px}
+.guide-card{display:flex;flex-direction:column;align-items:flex-start;min-height:247px;padding:26px;background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 8px 18px rgba(11,49,33,.035);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.guide-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.guide-card:focus-visible{outline-offset:5px}
+.guide-card .guide-num{font:750 11px system-ui,sans-serif;letter-spacing:.17em;color:#839386}
+.guide-card .guide-icon{font-size:31px;line-height:1.3;margin:15px 0 13px}
+.guide-card strong{font:750 19px/1.35 system-ui,sans-serif;letter-spacing:-.01em}
+.guide-card span:not(.guide-num):not(.guide-icon){font-size:14px;color:var(--muted);margin-top:10px}
+.guide-card b{font-size:13px;color:var(--green-2);margin-top:auto;padding-top:17px}
+.guide-action-grid{display:flex;flex-wrap:wrap;gap:14px}
+.guide-steps{list-style:none;counter-reset:guide-step;padding:0;margin:24px 0}
+.guide-steps li{counter-increment:guide-step;position:relative;padding:0 0 18px 47px;line-height:1.75}
+.guide-steps li::before{content:counter(guide-step);position:absolute;top:0;left:0;display:grid;place-items:center;width:31px;height:31px;border-radius:10px;background:#e2f0e5;color:#19533c;font-size:13px;font-weight:850}
+.guide-note{padding:28px;border:1px solid #cbdccb;border-radius:18px;background:#f0f6ef;color:#274639}
+.guide-note h3{font:750 20px/1.3 system-ui,sans-serif;letter-spacing:0}
+.guide-note p{font-size:14px;line-height:1.75;color:#475e50}
+.guide-note p:last-child{margin-bottom:0}
+.guide-note a{font-weight:750;color:#1d6543}
+.guide-layout{display:grid;grid-template-columns:minmax(0,1fr) 255px;gap:60px;align-items:start;padding-block:55px 96px}
+.guide-content{min-width:0}.guide-content section:not(.guide-end){margin:0 0 65px;scroll-margin-top:100px}
+.guide-content section>h2{font-size:clamp(28px,3.2vw,39px);margin-bottom:17px}
+.guide-content p{color:#425b4d;line-height:1.82}
+.guide-content ol,.guide-content ul{color:#41594b}
+.guide-content a:not(.button){color:#196346;text-decoration-thickness:1px;text-underline-offset:3px}
+.guide-content .notice{margin:24px 0}
+.guide-toc{padding:17px 20px;background:#f0f5ee;border-radius:13px;margin:0 0 48px;font-size:14px;color:#556c5c;line-height:2}
+.guide-toc b{display:block;font-size:13px;color:#244d38;line-height:1.4;margin-bottom:6px}
+.guide-toc a{white-space:nowrap}
+.guide-bullets{padding-left:22px}.guide-bullets li{margin-bottom:14px;line-height:1.8}
+.guide-table-wrap{overflow-x:auto;margin:23px 0}
+.guide-table{width:100%;border-collapse:collapse;font-size:14px}
+.guide-table th,.guide-table td{text-align:left;padding:14px 17px;border:1px solid #dce7da;vertical-align:top}
+.guide-table th{background:#eaf3e8;color:#244636}
+.guide-table td{background:#fffefa}
+.guide-content code{font-size:13px;background:#f0f3ea;border:1px solid #d7e4d7;border-radius:5px;padding:3px 5px;white-space:normal;overflow-wrap:anywhere}
+.guide-end{margin-top:30px;padding:30px;border-top:2px solid #dce7dc;background:#f4f7f0;border-radius:0 0 18px 18px}
+.guide-end h2{font-size:28px}
+.guide-sidebar{position:sticky;top:105px;border:1px solid #dce5da;background:#fffefa;border-radius:20px;padding:23px}
+.guide-sidebar h2{font:750 17px/1.4 system-ui,sans-serif;margin-bottom:15px;letter-spacing:0}
+.guide-sidebar>a{display:block;border-radius:9px;text-decoration:none;padding:10px 12px;color:#3e5547;font-size:14px;font-weight:650}
+.guide-sidebar>a:hover,.guide-sidebar>a[aria-current=page]{background:#ebf4e9;color:#1b533d}
+.sidebar-warning{border-top:1px solid var(--line);padding-top:19px;margin-top:16px;color:#315941;font-size:12px}
+.sidebar-warning p{color:#687c6e;font-size:12px;line-height:1.65;margin:7px 0 0}
+@media(max-width:950px){.guide-card-grid{grid-template-columns:repeat(2,1fr)}.guide-layout{grid-template-columns:minmax(0,1fr) 210px;gap:27px}}
+@media(max-width:740px){.guide-layout{display:flex;flex-direction:column;gap:0;padding-top:32px}.guide-sidebar{position:static;order:-1;width:100%;margin-bottom:33px}.guide-sidebar>a{display:inline-block;padding:8px 10px}.guide-sidebar .sidebar-warning{display:none}.guide-banner{padding:48px 0}.guide-content section:not(.guide-end){margin-bottom:47px}}
+@media(max-width:600px){.guide-card-grid{grid-template-columns:1fr}.guide-card{min-height:205px}.guide-toc{font-size:13px}.guide-note{padding:22px}.guide-action-grid .button{width:100%}.guide-steps li{padding-left:40px}.guide-content section>h2{font-size:29px}}
