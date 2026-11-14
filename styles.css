@@ -138,3 +138,15 @@ h1{font-size:clamp(42px,5.8vw,77px);margin-bottom:25px}h2{font-size:clamp(31px,3
 @media(max-width:950px){.guide-card-grid{grid-template-columns:repeat(2,1fr)}.guide-layout{grid-template-columns:minmax(0,1fr) 210px;gap:27px}}
 @media(max-width:740px){.guide-layout{display:flex;flex-direction:column;gap:0;padding-top:32px}.guide-sidebar{position:static;order:-1;width:100%;margin-bottom:33px}.guide-sidebar>a{display:inline-block;padding:8px 10px}.guide-sidebar .sidebar-warning{display:none}.guide-banner{padding:48px 0}.guide-content section:not(.guide-end){margin-bottom:47px}}
 @media(max-width:600px){.guide-card-grid{grid-template-columns:1fr}.guide-card{min-height:205px}.guide-toc{font-size:13px}.guide-note{padding:22px}.guide-action-grid .button{width:100%}.guide-steps li{padding-left:40px}.guide-content section>h2{font-size:29px}}
+
+/* Юридические документы */
+.legal-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center;max-width:1160px;margin:28px auto 0;padding:21px 10px 0;border-top:1px solid #355047;font-size:13px}
+.legal-links a{color:#d9e8df;text-decoration:underline;text-decoration-color:#789385;text-underline-offset:4px}
+.legal-links a:hover{color:#f0d2a7}
+.legal-links span{color:#8ca699}
+.legal-copy section h2{font-family:Georgia,"Times New Roman",serif}
+.legal-copy section p{overflow-wrap:anywhere}
+.legal-copy section a{overflow-wrap:anywhere}
+.legal-copy .guide-table{min-width:580px}
+.legal-copy section .guide-table td:first-child{width:31%;font-weight:700}
+@media(max-width:600px){.legal-links{align-items:flex-start;gap:8px 12px;font-size:12px}}
