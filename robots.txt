@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://domin0nml-crypto.github.io/plemennaya-kniga-site/sitemap.xml
+Sitemap: https://breedbook.ru/sitemap.xml
