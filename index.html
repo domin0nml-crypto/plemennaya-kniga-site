@@ -54,6 +54,21 @@
             <a class="animal-link" href="cats.html"><span class="animal-icon"><img src="assets/cat-icon.png" alt="" width="36" height="52"></span><span>Для кошек</span><span class="link-arrow" aria-hidden="true">›</span></a>
             <a class="animal-link" href="dogs.html"><span class="animal-icon"><img src="assets/dog-icon.png" alt="" width="36" height="52"></span><span>Для собак</span><span class="link-arrow" aria-hidden="true">›</span></a>
           </div>
+          <details class="help-links" style="grid-column:1/-1">
+            <summary class="button button-light">Поделиться</summary>
+            <div style="margin-top:12px">
+              <p>Ссылка на сайт — <a id="share-site-url" href="https://breedbook.ru/">https://breedbook.ru/</a></p>
+              <button class="button button-light" id="share-copy" type="button" hidden>Скопировать ссылку</button>
+              <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADoCAAAAADAwvekAAACzElEQVR4nO2d22rjQBAF18v+/y97H1Yg5AxNt+zJkjpVL8FJxlLRoMNc9Xj+yuD3/76B70JRGorSUJSGojQUpaEoDUVpKEpDURqK0lCUhqI0FKXxp/rjY/ptz1W7cnbnsWq4/Jr+5ZfEVFRRGorSiBEt4+WgMfvfD5RxZswvvySmoorSUJRGjGgnXg6Wz/Dls38eIR+9/JKYiipKQ1EaMaKDeOlzfeh3wuY6KraDmIoqSkNRGjGiW+LloJpX+YZAuRJTUUVpKEojRnQQL/0kuD1fX2XOm0EUU1FFaShKI0a0Ey9bplLWfZp9l4+pqKI0FKURI1rGy90Ow6Bd1af56MBZTEUVpaEojRjRzr6XRkejvzB5/bcqZZbX7d/aQUxFFaWhKI0Y0Q8NjlWZs15H1giU6mbGOy9jKqooDUVpxIjeXjk2zpyXBm9u1x83iKmoojQUpREjOti135gfma/8eqw+NYa8nsWnJTEVVZSGojRiRB/712wdvIRU1W0ZH13m3MuJojQUpaEojcESucGJnJcGZf/s7jGdy3uqiKmoojQUpREjOjgaut9P6jz0+8urGyHnJNOJojQUpREjWo4Cdtr/+zE/vrka6WuE1fi2YyqqKA1FacSI3p5kGo9qvVzo7nBYf9HElZiKKkpDURoxou8eT9DY2VMGST8tqk6MaxhOFKWhKI0Y0S2v5Vw2f4mAd5cGTImpqKI0FKURI7rztZzlyoDPzK84OPYFRWkoSiNGdMtrOZf/MugKjSd0HBw7UZSGojRiRHe+N61cB1adL1Ceyrb6ZO/lRFEaitKIEd0SL4P3PB/0T/JchpW9lxNFaShKI0Z0y2s5Oyu/7m7XH5+qdhBTUUVpKEojRnTLazmXPZPBvpdqRqX/yysxFVWUhqI0YkTf3bX/Y4ipqKI0FKWhKA1FaShKQ1EaitJQlIaiNBSloSgNRWkoSuMvtf558dS+234AAAAASUVORK5CYII=" width="160" height="160" alt="QR-код сайта breedbook.ru"></p>
+              <details>
+                <summary>Поделиться в приложении</summary>
+                <p>ВК, МАКС, Telegram, WhatsApp и другие приложения, доступные на устройстве.</p>
+                <button class="button button-light" id="share-native" type="button" hidden>Выбрать приложение</button>
+                <p id="share-unavailable">Скопируйте ссылку и отправьте её в нужном приложении.</p>
+              </details>
+              <p id="share-status" role="status" hidden></p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -212,5 +227,38 @@
       <div class="footer-bottom"><span>© 2026 «Племенная книга». Автор — Лариса Молчанова.</span><span>Записи питомника не собираются этим информационным сайтом. Он не содержит форм ввода.</span></div>
     </div>
   <nav class="legal-links" aria-label="Юридические документы"><a href="privacy.html">Политика конфиденциальности</a><span aria-hidden="true">·</span><a href="terms.html">Пользовательское соглашение</a></nav></footer>
+<script>
+(() => {
+  const link = document.getElementById("share-site-url");
+  const copy = document.getElementById("share-copy");
+  const nativeShare = document.getElementById("share-native");
+  const status = document.getElementById("share-status");
+  const data = {title: "Племенная книга", url: link.href};
+  function announce(message) {
+    status.textContent = message;
+    status.hidden = !message;
+  }
+  copy.hidden = typeof navigator.clipboard?.writeText !== "function";
+  copy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(data.url);
+      announce("Ссылка скопирована.");
+    } catch {
+      announce("Скопируйте адрес из ссылки выше.");
+    }
+  });
+  nativeShare.hidden = typeof navigator.share !== "function" ||
+    (typeof navigator.canShare === "function" && !navigator.canShare(data));
+  document.getElementById("share-unavailable").hidden = !nativeShare.hidden;
+  nativeShare.addEventListener("click", async () => {
+    announce("");
+    try {
+      await navigator.share(data);
+    } catch (error) {
+      if (error.name !== "AbortError") announce("Скопируйте ссылку и отправьте её в нужном приложении.");
+    }
+  });
+})();
+</script>
 </body>
 </html>
