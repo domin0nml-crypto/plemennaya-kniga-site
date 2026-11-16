@@ -47,28 +47,30 @@
           <div>
             <h1 id="hero-title">ПЛЕМЕННАЯ КНИГА</h1>
             <p class="lead">Карточки, родословные, вязки и помёты. Электронная книга питомника, которая работает офлайн после первой загрузки.</p>
+            <div class="cover-actions">
+              <a class="animal-link" href="cats.html"><span class="animal-icon"><img src="assets/cat-icon.png" alt="" width="36" height="52"></span><span>Для кошек</span><span class="link-arrow" aria-hidden="true">›</span></a>
+              <a class="animal-link" href="dogs.html"><span class="animal-icon"><img src="assets/dog-icon.png" alt="" width="36" height="52"></span><span>Для собак</span><span class="link-arrow" aria-hidden="true">›</span></a>
+            </div>
+          </div>
+          <div>
             <p class="note"><strong>Базовая версия бесплатно.</strong> Без обязательной регистрации.</p>
             <div class="help-links"><a href="https://vk.ru/breed_cat" rel="noopener noreferrer">Сообщество ВК</a><a href="https://t.me/breed_book" rel="noopener noreferrer">Telegram-канал</a></div>
+            <details class="help-links">
+              <summary class="button button-light">Поделиться</summary>
+              <div style="margin-top:12px">
+                <p>Ссылка на сайт — <a id="share-site-url" href="https://breedbook.ru/">https://breedbook.ru/</a></p>
+                <button class="button button-light" id="share-copy" type="button" hidden>Скопировать ссылку</button>
+                <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADoCAAAAADAwvekAAACzElEQVR4nO2d22rjQBAF18v+/y97H1Yg5AxNt+zJkjpVL8FJxlLRoMNc9Xj+yuD3/76B70JRGorSUJSGojQUpaEoDUVpKEpDURqK0lCUhqI0FKXxp/rjY/ptz1W7cnbnsWq4/Jr+5ZfEVFRRGorSiBEt4+WgMfvfD5RxZswvvySmoorSUJRGjGgnXg6Wz/Dls38eIR+9/JKYiipKQ1EaMaKDeOlzfeh3wuY6KraDmIoqSkNRGjGiW+LloJpX+YZAuRJTUUVpKEojRnQQL/0kuD1fX2XOm0EUU1FFaShKI0a0Ey9bplLWfZp9l4+pqKI0FKURI1rGy90Ow6Bd1af56MBZTEUVpaEojRjRzr6XRkejvzB5/bcqZZbX7d/aQUxFFaWhKI0Y0Q8NjlWZs15H1giU6mbGOy9jKqooDUVpxIjeXjk2zpyXBm9u1x83iKmoojQUpREjOti135gfma/8eqw+NYa8nsWnJTEVVZSGojRiRB/712wdvIRU1W0ZH13m3MuJojQUpaEojcESucGJnJcGZf/s7jGdy3uqiKmoojQUpREjOjgaut9P6jz0+8urGyHnJNOJojQUpREjWo4Cdtr/+zE/vrka6WuE1fi2YyqqKA1FacSI3p5kGo9qvVzo7nBYf9HElZiKKkpDURoxou8eT9DY2VMGST8tqk6MaxhOFKWhKI0Y0S2v5Vw2f4mAd5cGTImpqKI0FKURI7rztZzlyoDPzK84OPYFRWkoSiNGdMtrOZf/MugKjSd0HBw7UZSGojRiRHe+N61cB1adL1Ceyrb6ZO/lRFEaitKIEd0SL4P3PB/0T/JchpW9lxNFaShKI0Z0y2s5Oyu/7m7XH5+qdhBTUUVpKEojRnTLazmXPZPBvpdqRqX/yysxFVWUhqI0YkTf3bX/Y4ipqKI0FKWhKA1FaShKQ1EaitJQlIaiNBSloSgNRWkoSuMvtf558dS+234AAAAASUVORK5CYII=" width="160" height="160" alt="QR-код сайта breedbook.ru"></p>
+                <details>
+                  <summary>Поделиться в приложении</summary>
+                  <p>ВК, МАКС, Telegram, WhatsApp и другие приложения, доступные на устройстве.</p>
+                  <button class="button button-light" id="share-native" type="button" hidden>Выбрать приложение</button>
+                  <p id="share-unavailable">Скопируйте ссылку и отправьте её в нужном приложении.</p>
+                </details>
+                <p id="share-status" role="status" hidden></p>
+              </div>
+            </details>
           </div>
-          <div class="cover-actions">
-            <a class="animal-link" href="cats.html"><span class="animal-icon"><img src="assets/cat-icon.png" alt="" width="36" height="52"></span><span>Для кошек</span><span class="link-arrow" aria-hidden="true">›</span></a>
-            <a class="animal-link" href="dogs.html"><span class="animal-icon"><img src="assets/dog-icon.png" alt="" width="36" height="52"></span><span>Для собак</span><span class="link-arrow" aria-hidden="true">›</span></a>
-          </div>
-          <details class="help-links" style="grid-column:1/-1">
-            <summary class="button button-light">Поделиться</summary>
-            <div style="margin-top:12px">
-              <p>Ссылка на сайт — <a id="share-site-url" href="https://breedbook.ru/">https://breedbook.ru/</a></p>
-              <button class="button button-light" id="share-copy" type="button" hidden>Скопировать ссылку</button>
-              <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADoCAAAAADAwvekAAACzElEQVR4nO2d22rjQBAF18v+/y97H1Yg5AxNt+zJkjpVL8FJxlLRoMNc9Xj+yuD3/76B70JRGorSUJSGojQUpaEoDUVpKEpDURqK0lCUhqI0FKXxp/rjY/ptz1W7cnbnsWq4/Jr+5ZfEVFRRGorSiBEt4+WgMfvfD5RxZswvvySmoorSUJRGjGgnXg6Wz/Dls38eIR+9/JKYiipKQ1EaMaKDeOlzfeh3wuY6KraDmIoqSkNRGjGiW+LloJpX+YZAuRJTUUVpKEojRnQQL/0kuD1fX2XOm0EUU1FFaShKI0a0Ey9bplLWfZp9l4+pqKI0FKURI1rGy90Ow6Bd1af56MBZTEUVpaEojRjRzr6XRkejvzB5/bcqZZbX7d/aQUxFFaWhKI0Y0Q8NjlWZs15H1giU6mbGOy9jKqooDUVpxIjeXjk2zpyXBm9u1x83iKmoojQUpREjOti135gfma/8eqw+NYa8nsWnJTEVVZSGojRiRB/712wdvIRU1W0ZH13m3MuJojQUpaEojcESucGJnJcGZf/s7jGdy3uqiKmoojQUpREjOjgaut9P6jz0+8urGyHnJNOJojQUpREjWo4Cdtr/+zE/vrka6WuE1fi2YyqqKA1FacSI3p5kGo9qvVzo7nBYf9HElZiKKkpDURoxou8eT9DY2VMGST8tqk6MaxhOFKWhKI0Y0S2v5Vw2f4mAd5cGTImpqKI0FKURI7rztZzlyoDPzK84OPYFRWkoSiNGdMtrOZf/MugKjSd0HBw7UZSGojRiRHe+N61cB1adL1Ceyrb6ZO/lRFEaitKIEd0SL4P3PB/0T/JchpW9lxNFaShKI0Z0y2s5Oyu/7m7XH5+qdhBTUUVpKEojRnTLazmXPZPBvpdqRqX/yysxFVWUhqI0YkTf3bX/Y4ipqKI0FKWhKA1FaShKQ1EaitJQlIaiNBSloSgNRWkoSuMvtf558dS+234AAAAASUVORK5CYII=" width="160" height="160" alt="QR-код сайта breedbook.ru"></p>
-              <details>
-                <summary>Поделиться в приложении</summary>
-                <p>ВК, МАКС, Telegram, WhatsApp и другие приложения, доступные на устройстве.</p>
-                <button class="button button-light" id="share-native" type="button" hidden>Выбрать приложение</button>
-                <p id="share-unavailable">Скопируйте ссылку и отправьте её в нужном приложении.</p>
-              </details>
-              <p id="share-status" role="status" hidden></p>
-            </div>
-          </details>
         </div>
       </div>
     </section>
