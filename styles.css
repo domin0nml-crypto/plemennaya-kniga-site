@@ -176,3 +176,6 @@ h1{font-size:clamp(42px,5.8vw,77px);margin-bottom:25px}h2{font-size:clamp(31px,3
 .pro-card .check-list li{padding-block:5px}
 .pro-card .check-list li::before{top:5px}
 .pro-card .pro-status{margin-top:18px;padding-top:12px;border-top:1px solid var(--line);font-weight:700}
+
+
+.site-footer .seller-details{margin-top:16px;line-height:1.7}
