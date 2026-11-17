@@ -1,0 +1,96 @@
+name: Публикация breedbook.ru в Яндекс Cloud
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: breedbook-production
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Опубликовать и проверить витрину breedbook.ru
+    if: github.repository == 'domin0nml-crypto/plemennaya-kniga-site' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SITE_BUCKET: breedbook.ru
+      SITE_DIR: breedbook-site-files
+    steps:
+      - name: Получить исходники витрины
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Подготовить файлы сайта
+        shell: bash
+        run: |
+          shopt -s nullglob
+          mkdir "$SITE_DIR"
+          cp -- ./*.html ./*.css ./*.js ./*.mjs ./*.svg ./robots.txt ./sitemap.xml "$SITE_DIR/"
+          cp -R -- assets "$SITE_DIR/"
+          printf '%s\n' "$GITHUB_SHA" > "$SITE_DIR/deploy-version.txt"
+
+      - name: Получить временный токен Яндекс Cloud
+        id: yandex_auth
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          YC_OIDC_AUDIENCE: https://github.com/domin0nml-crypto/plemennaya-kniga-site/tree/main
+          YC_SERVICE_ACCOUNT_ID: ajeubfq3t71lpf8o75he
+        with:
+          script: |
+            const githubToken = await core.getIDToken(process.env.YC_OIDC_AUDIENCE)
+            const response = await fetch('https://auth.yandex.cloud/oauth/token', {
+              method: 'POST',
+              body: new URLSearchParams({
+                grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
+                requested_token_type: 'urn:ietf:params:oauth:token-type:access_token',
+                audience: process.env.YC_SERVICE_ACCOUNT_ID,
+                subject_token: githubToken,
+                subject_token_type: 'urn:ietf:params:oauth:token-type:id_token'
+              }),
+              signal: AbortSignal.timeout(15000)
+            })
+            if (!response.ok) {
+              throw new Error('Яндекс отклонил обмен токена (HTTP ' + response.status + ')')
+            }
+            const { access_token: iamToken } = await response.json()
+            if (typeof iamToken !== 'string' || !iamToken) {
+              throw new Error('Яндекс не вернул IAM-токен')
+            }
+            core.setSecret(iamToken)
+            core.setOutput('iam_token', iamToken)
+
+      - name: Загрузить сайт в Object Storage
+        uses: yc-actions/yc-obj-storage-upload@47e8131e61b8c84857806333bfd8c954506a73f9 # v5
+        with:
+          yc-iam-token: ${{ steps.yandex_auth.outputs.iam_token }}
+          bucket: ${{ env.SITE_BUCKET }}
+          root: ${{ env.SITE_DIR }}
+          include: '**/*'
+          fail-on-error: true
+
+      - name: Сверить опубликованные файлы по HTTPS
+        shell: bash
+        run: |
+          origin="https://website.yandexcloud.net/$SITE_BUCKET"
+          received="$RUNNER_TEMP/breedbook-response"
+          for file in deploy-version.txt index.html cats.html dogs.html privacy.html terms.html robots.txt sitemap.xml styles.css assets/cover.webp; do
+            url="$origin/$file"
+            if [[ "$file" == index.html ]]; then
+              url="$origin/"
+            fi
+            curl --fail --silent --show-error --retry 3 --retry-all-errors \
+              --max-time 15 --output "$received" "$url?commit=$GITHUB_SHA"
+            cmp -- "$SITE_DIR/$file" "$received"
+            printf 'Проверено: %s\n' "$url"
+          done
+
+          printf '[Рабочая витрина в Object Storage](%s/)\n\nКоммит `%s` опубликован и проверен.\n' "$origin" "$GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
