@@ -38,10 +38,40 @@ jobs:
           cp -R -- assets "$SITE_DIR/"
           printf '%s\n' "$GITHUB_SHA" > "$SITE_DIR/deploy-version.txt"
 
+      - name: Получить временный токен Яндекс Cloud
+        id: yandex_auth
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          YC_OIDC_AUDIENCE: https://github.com/domin0nml-crypto/plemennaya-kniga-site/tree/main
+          YC_SERVICE_ACCOUNT_ID: ajeubfq3t71lpf8o75he
+        with:
+          script: |
+            const githubToken = await core.getIDToken(process.env.YC_OIDC_AUDIENCE)
+            const response = await fetch('https://auth.yandex.cloud/oauth/token', {
+              method: 'POST',
+              body: new URLSearchParams({
+                grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
+                requested_token_type: 'urn:ietf:params:oauth:token-type:access_token',
+                audience: process.env.YC_SERVICE_ACCOUNT_ID,
+                subject_token: githubToken,
+                subject_token_type: 'urn:ietf:params:oauth:token-type:id_token'
+              }),
+              signal: AbortSignal.timeout(15000)
+            })
+            if (!response.ok) {
+              throw new Error('Яндекс отклонил обмен токена (HTTP ' + response.status + ')')
+            }
+            const { access_token: iamToken } = await response.json()
+            if (typeof iamToken !== 'string' || !iamToken) {
+              throw new Error('Яндекс не вернул IAM-токен')
+            }
+            core.setSecret(iamToken)
+            core.setOutput('iam_token', iamToken)
+
       - name: Загрузить сайт в Object Storage
         uses: yc-actions/yc-obj-storage-upload@47e8131e61b8c84857806333bfd8c954506a73f9 # v5
         with:
-          yc-sa-id: ajeubfq3t71lpf8o75he
+          yc-iam-token: ${{ steps.yandex_auth.outputs.iam_token }}
           bucket: ${{ env.SITE_BUCKET }}
           root: ${{ env.SITE_DIR }}
           include: '**/*'
