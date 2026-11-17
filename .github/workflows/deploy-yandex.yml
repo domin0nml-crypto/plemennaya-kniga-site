@@ -1,0 +1,66 @@
+name: Публикация breedbook.ru в Яндекс Cloud
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: breedbook-production
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Опубликовать и проверить витрину breedbook.ru
+    if: github.repository == 'domin0nml-crypto/plemennaya-kniga-site' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SITE_BUCKET: breedbook.ru
+      SITE_DIR: breedbook-site-files
+    steps:
+      - name: Получить исходники витрины
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Подготовить файлы сайта
+        shell: bash
+        run: |
+          shopt -s nullglob
+          mkdir "$SITE_DIR"
+          cp -- ./*.html ./*.css ./*.js ./*.mjs ./*.svg ./robots.txt ./sitemap.xml "$SITE_DIR/"
+          cp -R -- assets "$SITE_DIR/"
+          printf '%s\n' "$GITHUB_SHA" > "$SITE_DIR/deploy-version.txt"
+
+      - name: Загрузить сайт в Object Storage
+        uses: yc-actions/yc-obj-storage-upload@47e8131e61b8c84857806333bfd8c954506a73f9 # v5
+        with:
+          yc-sa-id: ajeubfq3t71lpf8o75he
+          bucket: ${{ env.SITE_BUCKET }}
+          root: ${{ env.SITE_DIR }}
+          include: '**/*'
+          fail-on-error: true
+
+      - name: Сверить опубликованные файлы по HTTPS
+        shell: bash
+        run: |
+          origin="https://website.yandexcloud.net/$SITE_BUCKET"
+          received="$RUNNER_TEMP/breedbook-response"
+          for file in deploy-version.txt index.html cats.html dogs.html privacy.html terms.html robots.txt sitemap.xml styles.css assets/cover.webp; do
+            url="$origin/$file"
+            if [[ "$file" == index.html ]]; then
+              url="$origin/"
+            fi
+            curl --fail --silent --show-error --retry 3 --retry-all-errors \
+              --max-time 15 --output "$received" "$url?commit=$GITHUB_SHA"
+            cmp -- "$SITE_DIR/$file" "$received"
+            printf 'Проверено: %s\n' "$url"
+          done
+
+          printf '[Рабочая витрина в Object Storage](%s/)\n\nКоммит `%s` опубликован и проверен.\n' "$origin" "$GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
