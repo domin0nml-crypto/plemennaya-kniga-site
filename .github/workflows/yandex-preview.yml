@@ -30,7 +30,7 @@ jobs:
       - name: Подготовить файлы витрины
         shell: bash
         run: |
-          preview="$RUNNER_TEMP/breedbook-preview"
+          preview="$GITHUB_WORKSPACE/breedbook-preview"
           mkdir -p "$preview"
           for page in ./*.html; do
             case "$page" in
@@ -47,14 +47,14 @@ jobs:
         with:
           yc-sa-id: ajeifmnrldmi8gvn14t5
           bucket: ${{ env.PREVIEW_BUCKET }}
-          root: ${{ runner.temp }}/breedbook-preview
+          root: breedbook-preview
           include: '**/*'
           fail-on-error: true
 
       - name: Проверить опубликованную версию по HTTPS
         shell: bash
         run: |
-          preview="$RUNNER_TEMP/breedbook-preview"
+          preview="$GITHUB_WORKSPACE/breedbook-preview"
           site="https://$PREVIEW_BUCKET.website.yandexcloud.net"
           received="$RUNNER_TEMP/received-site-file"
 
