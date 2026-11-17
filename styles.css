@@ -166,3 +166,16 @@ h1{font-size:clamp(42px,5.8vw,77px);margin-bottom:25px}h2{font-size:clamp(31px,3
   .cover-content h1{font-size:clamp(26px,7.5vw,45px)}
   .hero{padding-top:16px}
 }
+
+.edition-prices{align-items:start}
+.edition-prices + .notice{margin-top:24px}
+.pro-card h2{font-size:clamp(26px,3vw,36px);margin-bottom:10px}
+.pro-card .pro-price{font-size:16px;color:var(--green)}
+.pro-price strong{font-size:30px;line-height:1.2}
+.pro-card .check-list{margin:14px 0 18px}
+.pro-card .check-list li{padding-block:5px}
+.pro-card .check-list li::before{top:5px}
+.pro-card .pro-status{margin-top:18px;padding-top:12px;border-top:1px solid var(--line);font-weight:700}
+
+
+.site-footer .seller-details{margin-top:16px;line-height:1.7}
