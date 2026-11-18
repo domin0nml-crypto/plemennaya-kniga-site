@@ -82,7 +82,7 @@ jobs:
         run: |
           origin="https://website.yandexcloud.net/$SITE_BUCKET"
           received="$RUNNER_TEMP/breedbook-response"
-          for file in deploy-version.txt index.html cats.html dogs.html privacy.html terms.html robots.txt sitemap.xml styles.css assets/cover.webp; do
+          for file in deploy-version.txt index.html cats.html dogs.html offer.html privacy.html terms.html robots.txt sitemap.xml styles.css assets/cover.webp; do
             url="$origin/$file"
             if [[ "$file" == index.html ]]; then
               url="$origin/"
