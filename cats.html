@@ -11,6 +11,8 @@
 <link rel="canonical" href="https://breedbook.ru/cats.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="styles.css?v=seller-details-1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Племенная книга для кошек","applicationCategory":"LifestyleApplication","operatingSystem":"Web browser","description":"Локальная племенная книга кошачьего питомника: карточки, родословные, вязки, помёты и ветеринарный календарь.","url":"https://plemennaya-kniga-larisa.website.yandexcloud.net/#dashboard","author":{"@type":"Person","name":"Лариса Молчанова"},"offers":{"@type":"Offer","price":"0","priceCurrency":"RUB","description":"Базовая редакция с ограничением на 20 самостоятельных карточек и 4 помёта"}}</script>
+<link rel="stylesheet" href="pregnancy-calculator.css">
+<script defer src="pregnancy-calculator.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">К содержимому</a>
@@ -21,16 +23,52 @@
 <main id="main">
 <section class="inner-hero"><div class="container inner-grid">
 <div><div class="breadcrumbs"><a href="./">Главная</a> / Для кошек</div><p class="eyebrow">Приложение для заводчиков кошек</p><h1>Племенная книга для кошек</h1><p class="lead">Ведите родословные и журнал вязок, указывайте окрасы по системе WCF и записывайте вес каждого котёнка с телефона. Записи хранятся на вашем устройстве. Регистрация для базовой книги не нужна.</p>
-<div class="actions"><a class="button" href="https://plemennaya-kniga-larisa.website.yandexcloud.net/#dashboard" rel="noopener noreferrer">Открыть книгу для кошек ↗</a><a class="button button-light" href="#functions">Посмотреть возможности</a></div>
+<div class="actions"><a class="button" href="https://plemennaya-kniga-larisa.website.yandexcloud.net/#dashboard" rel="noopener noreferrer">Открыть книгу для кошек ↗</a><a class="button button-light" href="#kalkulyator-rodov">Рассчитать дату родов</a></div>
 <p class="note">После первой загрузки программа рассчитана на работу офлайн. <strong>Базовая версия бесплатно:</strong> до 20 самостоятельных карточек и 4 помётов. <a href="#pro">Условия Pro</a></p>
 </div><img class="edition-portrait" src="assets/cat-portrait.webp" width="800" height="710" alt="Ориентальная кошка на бежевом пледе">
 </div></section>
+<section class="due-calculator" id="kalkulyator-rodov" data-due-calculator="cat" aria-labelledby="due-title">
+  <div class="container">
+    <h2 id="due-title">Когда ждать котят?</h2>
+    <p>По одной или нескольким датам вязки можно рассчитать примерный срок родов у кошки.</p>
+    <div class="due-layout">
+      <div class="due-fields" role="group" aria-label="Даты для расчёта">
+        <label>Дата первой вязки
+          <input id="first-mating" type="date" max="9999-12-31">
+        </label>
+        <details>
+          <summary>Было несколько вязок</summary>
+          <label>Дата последней вязки, если их было несколько
+            <input id="last-mating" type="date" max="9999-12-31">
+          </label>
+        </details>
+      </div>
+      <div class="due-result" role="status" aria-live="polite" aria-atomic="true">
+        <p data-result-label>Ориентировочная дата родов</p>
+        <strong data-result-value>Выберите дату</strong>
+        <p data-result-detail></p>
+      </div>
+    </div>
+    <noscript><p>Включите JavaScript для автоматического расчёта или используйте сроки, указанные ниже.</p></noscript>
+    <details class="due-method">
+      <summary>Как рассчитывается срок</summary>
+      <p>Ориентир — 65 дней от первой вязки. Для календаря берём период от 63-го дня после первой вязки до 68-го дня после последней. При одной вязке обе границы отсчитываются от неё.</p>
+      <p>Это календарная оценка. Фактический срок может отличаться. Беременность и состояние животного оценивает ветеринарный врач.</p>
+      <p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10845401/">О сроках беременности кошек</a></p>
+    </details>
+    <div class="due-sharing">
+      <a data-permalink href="https://breedbook.ru/cats.html#kalkulyator-rodov">Прямая ссылка на калькулятор</a>
+      <button type="button" class="button button-light button-inline" data-copy-link hidden>Скопировать ссылку</button>
+      <span role="status" data-copy-status></span>
+    </div>
+  </div>
+</section>
 <section class="section section-white" id="functions"><div class="container">
 <p class="eyebrow">Что внутри</p><h2>От родословной до веса котёнка</h2><p class="section-intro" style="margin-left:0">Программа создана для повседневного учёта кошачьего питомника, а не для заполнения очередной таблицы вручную.</p>
 <div class="detail-grid">
 <article class="detail-card"><h3>🐈 Карточки и происхождение</h3><p>В карточке животного хранятся родословная, окрас по системе WCF и группа крови. При подборе пары книга может предупредить о несовместимости групп крови. Доступны карточки действующих и архивных производителей.</p></article>
 <article class="detail-card"><h3>🎨 Калькулятор окрасов котят</h3><p>Откройте «Генетика и родословные», выберите кота и кошку и нажмите «Рассчитать пробную вязку». Вы увидите возможные окрасы котят по тем признакам, которые учитывает модель и для которых известны генотипы родителей.</p></article>
-<article class="detail-card"><h3>♡ Калькулятор беременности кошки</h3><p>Введите дату вязки — книга рассчитает ориентировочную дату родов. Если вязок было несколько, вы увидите диапазон дат. В истории беременности можно сохранять наблюдения.</p></article>
+<article class="detail-card"><h3>♡ Калькулятор беременности кошки</h3><p>Введите дату вязки — книга рассчитает ориентировочную дату родов. Если вязок было несколько, вы увидите диапазон дат. В истории беременности можно сохранять наблюдения. <a href="#kalkulyator-rodov">Открыть калькулятор</a>.</p></article>
 <article class="detail-card"><h3>🐾 Котята и помёты</h3><p>Ведите дневник веса котят и смотрите на графике, как растёт каждый малыш. В карточке помёта отмечайте прививки, обработки и статусы котят.</p></article>
 <article class="detail-card"><h3>▦ Ветеринарный календарь</h3><p>Вакцинации, обработки и важные сроки. Помогает не потерять нужное событие среди записей.</p></article>
 <article class="detail-card"><h3>↧ Локальная база и JSON</h3><p>Данные сохраняются в браузере устройства. Можно выгрузить резервную копию и восстановить записи из JSON-файла.</p></article>

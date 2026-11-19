@@ -11,6 +11,8 @@
 <link rel="canonical" href="https://breedbook.ru/dogs.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="styles.css?v=seller-details-1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Племенная книга для собак","applicationCategory":"LifestyleApplication","operatingSystem":"Web browser","description":"Локальная племенная книга собачьего питомника: карточки, родословные, течки, вязки, помёты и ветеринарный календарь.","url":"https://plemennaya-kniga-dogs-larisa.website.yandexcloud.net/#dashboard","author":{"@type":"Person","name":"Лариса Молчанова"},"offers":{"@type":"Offer","price":"0","priceCurrency":"RUB","description":"Базовая редакция с ограничением на 20 самостоятельных карточек и 4 помёта"}}</script>
+<link rel="stylesheet" href="pregnancy-calculator.css">
+<script defer src="pregnancy-calculator.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">К содержимому</a>
@@ -21,16 +23,55 @@
 <main id="main">
 <section class="inner-hero"><div class="container inner-grid">
 <div><div class="breadcrumbs"><a href="./">Главная</a> / Для собак</div><p class="eyebrow">Приложение для заводчиков собак</p><h1>Племенная книга для собак</h1><p class="lead">Проверьте родство кобеля и суки до вязки. После вязки следите за сроком щенения, а когда родится помёт, записывайте вес щенков и готовьте сведения к актировке.</p>
-<div class="actions"><a class="button" href="https://plemennaya-kniga-dogs-larisa.website.yandexcloud.net/#dashboard" rel="noopener noreferrer">Открыть книгу для собак ↗</a><a class="button button-light" href="#functions">Посмотреть возможности</a></div>
+<div class="actions"><a class="button" href="https://plemennaya-kniga-dogs-larisa.website.yandexcloud.net/#dashboard" rel="noopener noreferrer">Открыть книгу для собак ↗</a><a class="button button-light" href="#kalkulyator-rodov">Рассчитать срок щенения</a></div>
 <p class="note">После первой загрузки программа рассчитана на работу офлайн. <strong>Базовая версия бесплатно:</strong> до 20 самостоятельных карточек и 4 помётов. <a href="#pro">Условия Pro</a></p>
 </div><img class="edition-portrait" src="assets/dog-portrait.webp" width="800" height="710" alt="Питбуль с ушами-розочками на бежевом пледе">
 </div></section>
+<section class="due-calculator" id="kalkulyator-rodov" data-due-calculator="dog" aria-labelledby="due-title">
+  <div class="container">
+    <h2 id="due-title">Когда ждать щенков?</h2>
+    <p>Введите дату вязки. Если известна дата овуляции, её можно указать в дополнительных датах для более точного расчёта.</p>
+    <div class="due-layout">
+      <div class="due-fields" role="group" aria-label="Даты для расчёта">
+        <label>Дата первой вязки
+          <input id="first-mating" type="date" max="9999-12-31">
+        </label>
+        <details>
+          <summary>Дополнительные даты</summary>
+          <label>Дата последней вязки, если их было несколько
+            <input id="last-mating" type="date" max="9999-12-31">
+          </label>
+            <label>Дата овуляции, если установлена
+              <input id="ovulation" type="date" max="9999-12-31">
+            </label>
+        </details>
+      </div>
+      <div class="due-result" role="status" aria-live="polite" aria-atomic="true">
+        <p data-result-label>Ориентировочный период щенения</p>
+        <strong data-result-value>Выберите дату</strong>
+        <p data-result-detail></p>
+      </div>
+    </div>
+    <noscript><p>Включите JavaScript для автоматического расчёта или используйте сроки, указанные ниже.</p></noscript>
+    <details class="due-method">
+      <summary>Как рассчитывается срок</summary>
+      <p>По вязкам расчёт даёт диапазон от 58-го дня после первой до 72-го дня после последней. Если известна дата овуляции, расчёт идёт от неё: ориентир — 63 дня, диапазон — 61–65 дней.</p>
+      <p>Это календарная оценка. Фактический срок может отличаться. Беременность и состояние животного оценивает ветеринарный врач.</p>
+      <p><a href="https://www.merckvetmanual.com/management-and-nutrition/management-of-reproduction-dogs-and-cats/whelping-and-queening-in-bitches-and-queens">Срок от вязки</a> · <a href="https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-information/normal-whelping-process">Срок от овуляции</a></p>
+    </details>
+    <div class="due-sharing">
+      <a data-permalink href="https://breedbook.ru/dogs.html#kalkulyator-rodov">Прямая ссылка на калькулятор</a>
+      <button type="button" class="button button-light button-inline" data-copy-link hidden>Скопировать ссылку</button>
+      <span role="status" data-copy-status></span>
+    </div>
+  </div>
+</section>
 <section class="section section-white" id="functions"><div class="container">
 <p class="eyebrow">Всё для учёта</p><h2>От производителя до взрослой собаки</h2><p class="section-intro" style="margin-left:0">В племенной сводке выберите производителя или пару, чтобы посмотреть историю вязок, родов и потомства.</p>
 <div class="detail-grid">
 <article class="detail-card"><h3>🐕 Родословные и расчёт инбридинга</h3><p>В разделе «Родословные и родство» выберите кобеля и суку и нажмите «Рассчитать родство». Книга покажет ожидаемый коэффициент инбридинга (COI) щенков. Если часть предков неизвестна, результат может быть занижен.</p></article>
 <article class="detail-card"><h3>♡ Календарь течек суки</h3><p>Записывайте начало и окончание каждой течки и свои наблюдения. В журнале видно, сколько дней прошло между началами двух записанных течек.</p></article>
-<article class="detail-card"><h3>Калькулятор беременности собаки</h3><p>Введите даты вязок, чтобы увидеть ориентировочный диапазон дат щенения. Если дата овуляции известна, внесите её отдельно. Книга покажет срок от овуляции и дни после вязок.</p></article>
+<article class="detail-card"><h3>Калькулятор беременности собаки</h3><p>Введите даты вязок, чтобы увидеть ориентировочный диапазон дат щенения. Если дата овуляции известна, внесите её отдельно. Книга покажет срок от овуляции и дни после вязок. <a href="#kalkulyator-rodov">Открыть калькулятор</a>.</p></article>
 <article class="detail-card"><h3>🐾 Дневник веса щенков</h3><p>После взвешивания запишите вес каждого щенка с телефона. На графике роста видно, как меняется вес. В карточке можно отметить, кого забронировали, передали владельцу или оставили в питомнике.</p></article>
 <article class="detail-card"><h3>▦ Ветеринарный календарь</h3><p>Прививки, обработки и другие важные процедуры для взрослых собак и щенков. Помогает держать сроки в поле зрения.</p></article>
 <article class="detail-card"><h3>📋 Подготовка помёта к актировке</h3><p>В разделе «Документы» выберите «Сводка помёта». Проверьте клички, пол, окрасы и номера клейм или чипов. Список щенков можно распечатать и взять с собой на обследование помёта.</p></article>
