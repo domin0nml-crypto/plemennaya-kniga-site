@@ -28,7 +28,8 @@ def prepare(root, config):
             raise ValueError(f"{path.name}: не найден блок покупки.")
         link = (f'<p class="pro-status"><a class="button" href="{API}/checkout/{sku}">'
                 'Купить Pro за 500 ₽</a></p>')
-        html = html.replace(PLACEHOLDER, link)
+        vpn_note = "<p>Перед оплатой отключите VPN. С ним может не открыться страница оплаты или подтверждения банка.</p>"
+        html = html.replace(PLACEHOLDER, vpn_note + "\n      " + link)
         html = html.replace("Условия будущей платной лицензии:", "Условия лицензии и возврата:")
         path.write_text(html.replace(" Оплата пока не подключена.", ""), encoding="utf-8")
 
